@@ -1,0 +1,26 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    url: jdbc:mariadb://umc-rds-test.cgrxpidbha93.ap-northeast-2.rds.amazonaws.com:3306/daangndb
+    username: ${MARIADB_USER}
+    password: ${MARIADB_PW}
+    driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    #      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+#  aop: # JDK Dynamic Proxy
+#    proxy-target-class: false
+
+logging:
+  level:
+    org:
+      springframework:
+        orm:
+          jpa: DEBUG
