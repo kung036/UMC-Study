@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.Valid;
-import javax.validation.constraints.Positive;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 @Getter
 @Setter
@@ -21,6 +21,7 @@ public class MemberEntity extends Auditable {
     @Column(length = 10, nullable = false)
     private String name;
 
+    @Min(0)
     @Column(nullable = false)
     private int pay = 0;
 

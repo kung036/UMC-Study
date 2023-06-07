@@ -42,15 +42,23 @@ public class MemberController {
     // Update
     @PatchMapping
     public ResponseEntity patchMember(@RequestBody MemberDto.Patch patch) {
-        MemberEntity member = memberService.updateMember(memberMapper.memberDtoPatchToMember(patch));
+        MemberEntity member = memberService.patchMember(memberMapper.memberDtoPatchToMember(patch));
+        MemberDto.Response response = memberMapper.memberToMemberDtoResponse(member);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @PutMapping
+    public ResponseEntity putMember(@Valid @RequestBody MemberDto.Put put) {
+        MemberEntity member = memberService.putMember(memberMapper.memberDtoPutToMember(put));
         MemberDto.Response response = memberMapper.memberToMemberDtoResponse(member);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     // Delete
-    @DeleteMapping
-    public ResponseEntity deleteMember(@Positive @RequestParam long memberId) {
+    @DeleteMapping("/{member-id}")
+    public ResponseEntity deleteMember(@Positive @PathVariable("member-id") long memberId) {
         memberService.deleteMember(memberId);
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

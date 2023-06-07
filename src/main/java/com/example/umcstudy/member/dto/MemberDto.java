@@ -30,6 +30,17 @@ public class MemberDto {
     @Getter
     @Setter
     @AllArgsConstructor
+    public static class Put {
+        private long memberId;
+        private String name;
+        private String pay;
+        private float temperature;
+        private String image;
+    }
+
+    @Getter
+    @Setter
+    @AllArgsConstructor
     public static class Response {
         private long memberId;
         private String name;
