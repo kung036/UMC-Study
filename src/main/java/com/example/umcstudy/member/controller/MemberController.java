@@ -40,16 +40,20 @@ public class MemberController {
     }
 
     // Update
-    @PatchMapping
-    public ResponseEntity patchMember(@RequestBody MemberDto.Patch patch) {
+    @PatchMapping("/{member-id}")
+    public ResponseEntity patchMember(@Positive @PathVariable("member-id") long memberId,
+                                      @RequestBody MemberDto.Patch patch) {
+        patch.setMemberId(memberId);
         MemberEntity member = memberService.patchMember(memberMapper.memberDtoPatchToMember(patch));
         MemberDto.Response response = memberMapper.memberToMemberDtoResponse(member);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PutMapping
-    public ResponseEntity putMember(@Valid @RequestBody MemberDto.Put put) {
+    @PutMapping("/{member-id}")
+    public ResponseEntity putMember(@Positive @PathVariable("member-id") long memberId,
+                                    @Valid @RequestBody MemberDto.Put put) {
+        put.setMemberId(memberId);
         MemberEntity member = memberService.putMember(memberMapper.memberDtoPutToMember(put));
         MemberDto.Response response = memberMapper.memberToMemberDtoResponse(member);
 
