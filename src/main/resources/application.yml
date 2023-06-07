@@ -11,6 +11,8 @@ spring:
     properties:
       hibernate:
         format_sql: true
+#  aop: # JDK Dynamic Proxy
+#    proxy-target-class: false
 
 logging:
   level:
