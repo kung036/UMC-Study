@@ -29,6 +29,7 @@ public class MemberService {
     public MemberEntity patchMember(MemberEntity member) {
         MemberEntity findMember = verifiedMember(member.getMemberId());
         Optional.ofNullable(member.getName()).ifPresent(findMember::setName);
+        Optional.ofNullable(member.getEmail()).ifPresent(findMember::setEmail);
         Optional.ofNullable(member.getPay()).ifPresent(findMember::setPay);
         Optional.ofNullable(member.getTemperature()).ifPresent(findMember::setTemperature);
         Optional.ofNullable(member.getImage()).ifPresent(findMember::setImage);
@@ -38,6 +39,7 @@ public class MemberService {
 
     public MemberEntity putMember(MemberEntity member) {
         MemberEntity findMember = verifiedMember(member.getMemberId());
+        findMember.setEmail(member.getEmail());
         findMember.setName(member.getName());
         findMember.setPay(member.getPay());
         findMember.setTemperature(member.getTemperature());

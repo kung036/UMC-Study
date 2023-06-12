@@ -13,6 +13,7 @@ public class MemberDto {
     @AllArgsConstructor
     public static class Post {
         private long memberId;
+        private String email;
         private String name;
     }
 
@@ -21,6 +22,7 @@ public class MemberDto {
     @AllArgsConstructor
     public static class Patch {
         private long memberId;
+        private String email;
         private String name;
         private String pay;
         private float temperature;
@@ -32,6 +34,7 @@ public class MemberDto {
     @AllArgsConstructor
     public static class Put {
         private long memberId;
+        private String email;
         private String name;
         private String pay;
         private float temperature;
@@ -43,6 +46,7 @@ public class MemberDto {
     @AllArgsConstructor
     public static class Response {
         private long memberId;
+        private String email;
         private String name;
         private String pay;
         private float temperature;
