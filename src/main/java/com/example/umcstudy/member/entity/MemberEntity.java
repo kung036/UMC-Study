@@ -13,6 +13,7 @@ import javax.validation.constraints.Min;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity(name = "MEMBER")
 public class MemberEntity extends Auditable {
     @Id
@@ -23,7 +24,7 @@ public class MemberEntity extends Auditable {
     @Column(unique = true, nullable = false)
     private String email;
 
-    @Column(length = 10, nullable = false)
+    @Column(length = 10)
     private String name;
 
     @Min(0)
@@ -35,4 +36,10 @@ public class MemberEntity extends Auditable {
 
     @Column(nullable = false)
     private String image = "https://server?name=basic_image";
+
+    public MemberEntity(String email, String name, String image) {
+        this.email = email;
+        this.name = name;
+        this.image = image;
+    }
 }

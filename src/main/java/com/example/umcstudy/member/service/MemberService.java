@@ -16,12 +16,23 @@ public class MemberService {
 
     //Create
     public MemberEntity craeteMember(MemberEntity member) {
+        if(findByEmail(member.getEmail()) != null)
+            return findByEmail(member.getEmail());
+
         return memberRepository.save(member);
     }
 
     // Read
     public MemberEntity findMember(long memberId) {
         MemberEntity member = verifiedMember(memberId);
+        return member;
+    }
+
+    // email로 user 정보 조회
+    public MemberEntity findByEmail(String email) {
+        Optional<MemberEntity> optionalUser = memberRepository.findByEmail(email);
+        MemberEntity member = optionalUser.orElse(null);
+
         return member;
     }
 
