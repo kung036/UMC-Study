@@ -24,6 +24,29 @@ spring:
             scope:
               - email
               - profile
+          kakao:
+            clientId: ${KAKAO_OAUTH_ID}
+            clientSecret: ${KAKAO_OAUTH_PW}
+            scope:
+              - profile_nickname
+              - profile_image
+              - account_email
+              - name
+            client-name: Kakao
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8080/login/oauth2/code/kakao
+            client-authentication-method: POST
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: id
+
+# KAKAO API 로그인
+# https://lotuus.tistory.com/104
+# https://velog.io/@shwncho/Spring-Boot-%EC%B9%B4%EC%B9%B4%EC%98%A4-%EB%A1%9C%EA%B7%B8%EC%9D%B8-APIoAuth-2.0
+# https://developers.kakao.com/console/app/923128/product/login/scope
 
 server:
   servlet:
